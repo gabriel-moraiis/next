@@ -10,6 +10,7 @@ export default function Document() {
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 
         <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }}/>
+        <title>Ignite Shop</title>
       </Head>
       <body>
         <Main />
