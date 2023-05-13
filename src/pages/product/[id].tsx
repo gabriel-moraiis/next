@@ -10,31 +10,31 @@ interface ProductProps {
     name: string;
     description: string | null;
     imageUrl: string;
-    price: Stripe.Price;
-}
+    price: React.ReactNode;
+  }
 }
 
 export default function Product({ product }: ProductProps) {
 
-  return(
-    <ProductContainer>
-      <ImageContainer>
-        <Image
-        src={product.imageUrl}
-        width={520}
-        height={480}
-        alt=""
-        />
-      </ImageContainer>
+  return (
+      <ProductContainer>
+        <ImageContainer>
+          <Image
+            src={product.imageUrl}
+            width={520}
+            height={480}
+            alt=""
+          />
+        </ImageContainer>
 
-      <ProductDetails>
-        <h1>{product.name}</h1>
-        <span>{product.price}</span>
-        <p>{product.description}</p>
+        <ProductDetails>
+          <h1>{product.name}</h1>
+          <span>{product.price}</span>
+          <p>{product.description}</p>
 
-        <button>Comprar agora</button>
-      </ProductDetails>
-    </ProductContainer>
+          <button>Comprar agora</button>
+        </ProductDetails>
+      </ProductContainer>
   )
 }
 
@@ -54,7 +54,10 @@ export const getServerSideProps: GetServerSideProps<any, { id: string }> = async
         name: product.name,
         imageUrl: product.images[0],
         description: product.description,
-        price,
+        price: new Intl.NumberFormat('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        }).format(price.unit_amount! / 100),
       }
     }
   }
