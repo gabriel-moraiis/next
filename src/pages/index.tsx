@@ -39,7 +39,6 @@ export default function Home({ products }: HomeProps) {
           <footer>
             <strong>{product.name}</strong>
             <span>{product.price}</span>
-            <strong>Hello world</strong>
           </footer>
         </Product>
         </Link>
